@@ -1,0 +1,7 @@
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  text-align: center;
+  border: 1px solid navy;
+}
