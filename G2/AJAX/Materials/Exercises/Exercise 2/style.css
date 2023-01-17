@@ -1,0 +1,5 @@
+td {
+    border: 2px solid black;
+    padding:20px;
+    background-image: linear-gradient(lightblue, white);
+}
