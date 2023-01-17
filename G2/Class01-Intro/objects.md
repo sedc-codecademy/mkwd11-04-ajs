@@ -16,6 +16,23 @@ When working with data it is really important to organize it and structure it ac
 
 ```javascript
 let dog = {
+	head:{
+		eyes: 2,
+		nose: true,
+		blink:function(){
+			this.head.eyes = 1;
+			setTimeout(()=>{
+				this.head.eyes =2
+			},1000)
+		}
+	},
+	sopstvenik: {
+		ime: 'David',
+		imaKuce: true,
+		pcuj:function(){
+			console.log('mrsh')
+		}
+	},
 	name: "Sparky",
 	color: "Brown",
 	age: 1,
@@ -29,12 +46,13 @@ let dog = {
 		console.log("NOM NOM NOM");
 	}
 }
+
 ```
 
 ### new Object()
 
 ```js
-let dog = new Object();
+let dog = {};
 dog.name = "Sparky";
 dog.color = "Brown";
 dog.age = 1;
@@ -64,8 +82,9 @@ dog.bark() // AF AF AF
 ## Constructor Notation Templates
 
 ```javascript
-function Dog(name, color, age, favoriteFood){
-	this.name = name === undefined ? "unnamed" : name; // in case tehre is no name
+class Dog{
+constructor(name, color, age, favoriteFood){
+this.name = name === undefined ? "unnamed" : name; // in case tehre is no name
 	this.color = color;
 	this.age = age;
 	this.hasOwner = false; // default value for all
@@ -78,6 +97,8 @@ function Dog(name, color, age, favoriteFood){
 		fav.toLowerCase() === food.toLowerCase() ? console.log("*My favorite!*") : "");
 		console.log("NOM NOM NOM");
 		}
+}
+	
 }
 
 let sparky = new Dog("Sparky", "Brown", 1, ["Chicken", "Cucumber"]);

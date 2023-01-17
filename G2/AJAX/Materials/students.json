@@ -1,0 +1,12 @@
+{
+  "trainer": "Trainer Name",
+  "assistant": "Assistant Name",
+  "students": [
+    "Bob",
+    "Samantha",
+    "Chris",
+    "Jill",
+    "Greg"
+  ],
+  "academy": "Code"
+}
