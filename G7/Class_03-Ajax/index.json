@@ -1,0 +1,7 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "age": 27,
+  "hasDrivingLicense": true,
+  "favouriteFood": ["Chicken Doner", "Soup"]
+}
