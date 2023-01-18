@@ -73,9 +73,38 @@ document.getElementById('btn2')
             method: "GET",
             success: function(response) {
                 console.log(response);
+
+                printPeople(response.people);
             },
             error: function(error) {
-
+                console.log(error.responseText);
             }
         })
-    })
+    });
+
+document.getElementById('btn3')
+    .addEventListener('click', function() {
+        fetch("http://api.open-notify.org/astros.json")
+            .then(function(response) {
+                console.log(response);
+                let data = response.json();
+                return data;
+            }).then(function(data) {
+                console.log(data);
+
+                printPeople(data.people);
+            }).catch(function(error) {
+                console.log(error);
+            });
+    });
+
+
+function printPeople(people) {
+    let ul = document.getElementById('result');
+
+    let html = '';
+    for(let person of people) {
+        html += `<li>Name: ${person.name} Craft: ${person.craft}</li>`;
+    }
+    ul.innerHTML = html;
+}
