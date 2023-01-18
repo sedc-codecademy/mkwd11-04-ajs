@@ -17,4 +17,4 @@ Print the person stats in a **table**:
 * Eye color
 * Hair color
 
-**URL:** https://swapi.dev/api/people/1 \
+**URL:** https://swapi.dev/api/people/1
