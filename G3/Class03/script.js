@@ -65,3 +65,17 @@ $(document).ready(function() {
         })
     })
 });
+
+document.getElementById('btn2')
+    .addEventListener('click', function() {
+        $.ajax({
+            url: "http://api.open-notify.org/astros.json",
+            method: "GET",
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+
+            }
+        })
+    })
