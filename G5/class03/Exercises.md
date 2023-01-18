@@ -18,4 +18,3 @@ Print the person stats in a **table**:
 * Hair color
 
 **URL:** https://swapi.dev/api/people/1 \
-**NOTE:** JQuery will autmatically parse this call (js will not).
