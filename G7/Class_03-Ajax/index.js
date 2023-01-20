@@ -71,10 +71,24 @@ myBtn.addEventListener("click", function(){
       let parsedResponse = JSON.parse(xhttp.responseText); // parsing the stringified json to object so we can use it
   
       console.log(parsedResponse)
-  
-      for(let person of parsedResponse.results){
-        myDiv.innerHTML += `${person.name} <br/>`
+
+      let starWarsResult = parsedResponse.results;
+
+        //let person is the object of the current iteration
+      // for(let person of parsedResponse.results){
+      //   myDiv.innerHTML += `${person.name} <br/>`
+      // }
+
+      // same as above; let person is equal to parsedResponse.results[i];
+
+      for(let i = 0; i < starWarsResult.length; i++){
+        console.log(starWarsResult[i])
+        myDiv.innerHTML += `${starWarsResult[i].name} birth: ${starWarsResult[i].birth_year} <br/>`
+        return
       }
+
+
+      // myDiv.innerHTML += `${starWarsResult[0].name} birth: ${starWarsResult[0].birth_year} <br/>`
     }
    
   }
