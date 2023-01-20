@@ -10,6 +10,8 @@ console.log(result);
 // num % 3 === 0
 // num % 4 === 0
 
+// Generate array solutions
+
 const numsDevisbleByThree = [];
 const numsDevisibleBYFour = [];
 const numsEndingInOne = [];
@@ -36,10 +38,6 @@ console.log(typeof "Borche");
 console.log(typeof 100);
 console.log(typeof "Borche" === "string");
 
-// Create a function that cleans an array of any values and leaves only STRINGS
-// Create a function that cleans an array of any values and leaves only NUMBERS
-// Create a function that cleans undefined, null, NaN, and "" and leaves all other values
-
 const testData = [
   true,
   false,
@@ -63,6 +61,8 @@ const testData = [
   1,
   22,
 ];
+
+// Filter function solutions
 
 function filterStrings(arr) {
   const resultArr = [];
@@ -125,7 +125,7 @@ console.log(mazda);
 
 mazda.drive();
 
-// Color changer
+// Color changer solution
 const bodyEl = document.querySelector("body");
 
 function generateRandomColor() {
@@ -169,3 +169,49 @@ btnEl.addEventListener("click", function () {
     headingEl
   );
 });
+
+// Student constructor solution
+
+function Student(firstName, lastName, birthYear, academy, grades) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.birthYear = birthYear;
+  this.academy = academy;
+  this.grades = grades;
+
+  this.getAge = function () {
+    return new Date().getFullYear() - this.birthYear;
+  };
+  this.getInfo = function () {
+    return `This is student ${this.firstName} ${this.lastName} from the academy ${this.academy}!`;
+  };
+  this.getGradesAverage = function () {
+    let sum = 0;
+    for (let grade of this.grades) {
+      sum += grade;
+    }
+    return sum / this.grades.length;
+  };
+}
+
+const students = [
+  new Student("John", "Doe", 1993, "Academy for Programming", [1, 3, 2, 4, 5]),
+  new Student(
+    "Jane",
+    "Adams",
+    1982,
+    "Academy for Programming",
+    [5, 4, 5, 4, 5]
+  ),
+  new Student(
+    "Jack",
+    "Dorsey",
+    1993,
+    "Academy for Programming",
+    [1, 1, 2, 1, 1]
+  ),
+];
+
+console.log(students);
+
+console.log(students[1].getInfo());
