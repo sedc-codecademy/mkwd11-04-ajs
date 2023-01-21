@@ -3,8 +3,8 @@
 ## Exercise 1
   Make 3 anonymous functions (function expressions)
 
-  Function that takes a number through a parameter and returns how many digits that number has
-  Function that takes a number through a parameter and returns if its even or odd
+  Function that takes a number through a parameter and returns how many digits that number has\
+  Function that takes a number through a parameter and returns if its even or odd\
   Function that takes a number through a parameter and returns if its positive or negative
 
 
