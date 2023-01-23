@@ -29,7 +29,7 @@ console.log('***connected***')
 //     academy: "Code"
 //   };
 
-//     const myJson = '{"trainer": "Monika", "assistant": "Angel", "students": ["Bob", "Samantha", "Chris", "Jill", "Greg"], "academy": "Code"}'
+//   const myJson = '{"trainer": "Monika", "assistant": "Angel", "students": ["Bob", "Samantha", "Chris", "Jill", "Greg"], "academy": "Code"}'
 
 //   let jsObject = JSON.parse(myJson)
 //   console.log('Our js object:', jsObject)
@@ -116,10 +116,20 @@ fetchBtn.addEventListener('click', function(){
         .catch(function(err){
             console.log('Error:', err)
         })
-
-        
 })
 
+
+
+// Exercise 2
+// Create a button When the button is clicked, call the StarWars api for the first person.
+// Print the person name in an h1 tag.
+// Print the person stats in a table:
+
+// Height
+// Birth year
+// Eye color
+// Hair color
+// URL: https://swapi.dev/api/people/1
 
 
 
