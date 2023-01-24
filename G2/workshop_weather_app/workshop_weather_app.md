@@ -21,11 +21,20 @@ const apiParameters = {
                 return reject("Geolocation is not supported by this browser.");
             }
         })
-    },
+    };
 
- const {latitude, longitude} = gpsData.coords;
+     getLocation()
+        .then(position=>{
+        // const {latitude, longitude} = position.coords;
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
- fetch(`${apiParameters.apiFirstUrl}?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiParameters.apiKey}&exclude=minutely`)
+        fetch(`${apiParameters.apiFirstUrl}?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiParameters.apiKey}&exclude=minutely`)
+
+        
+    })
+
+
 
 
 ```
