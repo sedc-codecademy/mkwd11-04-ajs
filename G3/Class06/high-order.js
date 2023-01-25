@@ -124,3 +124,140 @@ let studentAbove18WithGrade4orMore = students
     .filter(x => x.grade > 4)
     .map(x => x.firstName);
 console.log(studentAbove18WithGrade4orMore);
+
+
+let numbers2 = [1, 5, 3, 7, 10, 2, 4, 22, 8];
+
+let sortedNumberAsc = numbers2.sort((a, b) => a - b);
+console.log(sortedNumberAsc);
+
+let sortedNumberDesc = numbers2.sort((a, b) => b - a);
+console.log(sortedNumberDesc);
+
+let studentNames = students.map(x => x.firstName);
+console.log(studentNames);
+
+let sortedNamesAsc = studentNames.sort((a, b) => a.localeCompare(b));
+console.log(sortedNamesAsc);
+
+let sortedNamesADesc = studentNames.sort((a, b) => b.localeCompare(a));
+console.log(sortedNamesADesc);
+
+
+
+let numbers3 = [1, 5, 3, 7, 10, 2, 4, 22, 8];
+
+function sumAllNumbers(array) {
+    let sum = 0;
+    for(let num of array) {
+        sum += num;
+    }
+    return sum;
+}
+
+const reduceData = (data, reducer, accumulator) => {
+    for (const item of data) {
+        accumulator += reducer(item);
+    }
+
+    return accumulator;
+}
+
+let sumOfNumbers = numbers3.reduce((sum, current) => sum += current, 0);
+console.log(sumOfNumbers);
+
+let sumAllStudentNames = students                                       // allNames
+    .reduce((allNames, current) => `${allNames}, ${current.firstName}`, 'Students: ');
+console.log(sumAllStudentNames);
+
+
+
+// spread
+let numbers5 = [1, 2, 3, 4, 5, 6, 7, 8];
+let numbers6 = [1, 5, 3, 7, 10, 2, 4, 22, 8];
+
+let numbers7 = numbers5.concat(numbers6);
+console.log(numbers7);
+let numbers8 =[...numbers5, ...numbers6];
+console.log(numbers8);
+
+let numbers9 =[];
+numbers9.push(...numbers5);
+numbers9.push(...numbers6);
+console.log(numbers9);
+
+
+let obj = {
+    firstName: "Bob", 
+    lastName: "H", 
+    grade: 5, 
+    age: 19
+};
+
+let objNew = {
+    ...obj,
+    firstName: "Trajan",
+    lastName: 'Stevkovski',
+    dob: 1987,
+    subjects: ['Math', 'Science']
+}
+
+console.log(obj, objNew);
+
+
+// destructring
+
+let nums = [1, 5, 3, 7, 10, 2, 4, 22, 8];
+// let first = nums[0];
+// let second = nums[1];
+// let third = nums[2];
+
+let [first, second, third] = nums;
+
+console.log(first, second, third);
+// let suma = first + second + third;
+
+let { firstName, lastName } = obj; 
+console.log(firstName, lastName);
+
+let { firstName: a, lastName:b} = obj;
+console.log(a, b);
+
+function getFullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`;
+}
+
+let fullName = getFullName(objNew);
+console.log(fullName);
+
+
+let obj1 = {
+    fName: '',
+    lName: '',
+    age: 3,
+    canSing: true,
+    grades: [
+        {
+            subject: '',
+            grade: 2
+        },
+        {
+            subject: '',
+            grade: 2
+        },
+        {
+            subject: '',
+            grade: 2
+        },
+        {
+            subject: '',
+            grade: 2
+        }
+    ]
+}
+
+let obj2 = {
+    ...objNew,
+    ...obj1
+};
+console.log(obj2);
