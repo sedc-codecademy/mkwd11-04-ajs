@@ -146,3 +146,27 @@ let greetWithNameFemale = showMessage(document.getElementById('wellcome'), 'f');
 greetWithName('Trajan');
 greetWithNameFemale('Trajan');
 
+
+
+// Pure functions
+
+// not pure functions
+let numbers = [1, 2, 3, 4, 5,];
+function multiplyArray() {
+    let sum = 0;
+    for(let num of numbers) {
+        sum += num;
+    }
+    return sum;
+}
+
+let num = 1;
+function sumThreeNumbers(a, b) {
+    return num + a + b;
+}
+
+// pure function
+
+function sum(a, b) {
+     return a + b;
+}
