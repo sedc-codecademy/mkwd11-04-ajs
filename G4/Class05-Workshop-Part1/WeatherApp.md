@@ -12,7 +12,7 @@
 //This creates a new date object
 const date = new Date(timestamp * 1000);
 //This creates a readable full date (useful for showing current and daily wather)
-console.log(date.toLocaleDateString("mk"));
+console.log(date.toLocaleDateString("sr"));
 //This returns the hours (useful for showing hourly weather)
 console.log(date.getHours());
 ```
