@@ -241,3 +241,174 @@ let allGradesExeptLowest = students
 .map((student) => student.averageGrade)
 .reduce((sum, grade) => sum += grade, 0);
 ```
+
+### sort
+
+Sort is a function that always returns an array of the same items, and the same length but the items are sorted by some criteria. This function is different from the previous ones because not only does it return a result array, it also changes the original array. So if we want to keep the original order of our array we have to create a new variable with the copy of the original variable and sort that, so that our original array can stay the same. The sorting is done through a simple system. We send a callback that takes two parameters. The two parameters are tested in some expressions. If the expression returns less than 0, the first item is sent to a lower index than the second. If the expression returns more than 0 then the second is put to a lower index than the first. If the result is 0 then nothing happens
+
+```javascript
+// Without higher order function
+function sortFunc(arr){
+    for(let i =0;i<arr.length;i++){
+        for(let j= i+1;j<arr.length;j++){
+            if(arr[i].grade<arr[j].grade){
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+return arr;
+}
+
+let sorted = sortFunc(students);
+
+// With higher order function using a function
+function sortGradesDesc(student1, student2){
+	return student2.grade - student1.grade; // descending
+}
+function sortGradesAsc(student1, student2){
+	return student1.grade - student2.grade; // ascending
+}
+studentss.sort(sortGradesDesc);
+
+// With higher order function using annonimous function
+studentss.sort(function(student1, student2){
+	return student2.grade - student1.grade; // Descending
+});
+studentss.sort(function(student1, student2){
+	return student1.grade - student2.grade; // Ascending
+});
+
+// With higher order function using arrow function
+studentss.sort((student1, student2) =>student2.grade - student1.grade); // Descending
+studentss.sort((student1, student2) =>student1.grade - student2.grade); // Ascending
+
+// Keeping the original array
+function copyArray(array){
+    let copied = [];
+    array.forEach(x => copied.push(x));
+    return copied;
+}
+let sortedStudents = copyArray(students);
+sortedStudents.sort((student1, student2) =>student2.grade - student1.grade); // Descending
+sortedStudents.sort((student1, student2) =>student1.grade - student2.grade); // Ascending
+```
+
+#### Copy of an original array?
+
+By just writing let newStudents = students; we do not make a copy of the students array in the newStudents. We just pass a reference to the students array. This means that the two variables point to the same place in memory. When methods like sort, change this array it changes in the memory, and with that in both variables. 
+```javascript
+let sortedStudents = students;
+sortedStudents.sort((student1, student2) =>student2.grade - student1.grade);
+
+console.log(sortedStudents); // Sorted 
+console.log(students); // Also sorted? :(
+```
+
+### Solution
+
+```javascript
+// We create a new array [] and inside the brackets with spread, we add all elements from the students array
+function copyArray(array){
+    let copied = [];
+    array.forEach(x => copied.push(x));
+    return copied;
+}
+let sortedStudents = copyArray(students);
+sortedStudents.sort((student1, student2) =>student2.grade - student1.grade);
+
+console.log(sortedStudents); // Sorted 
+console.log(students); // Original order
+```
+
+![Pass by refference ](https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/Samples/passbyrefference.gif?raw=true)
+
+## Pure functions
+
+Pure functions are functions that do not need or change anything in the outside world. There is no special syntax or code for pure functions. You wrote some pure functions until this point for sure without even knowing that you did it. A pure function is a state of a function that we always try to achieve. With pure function, our code is cleaner, more organized, and decoupled ( with few connections and ties ). A code with pure functions is a code that can scale easily ( easier to continue working on and build on top of in the future ). Of course, there are times when you need something from the outside or you need to change something outside of the function and it is not wrong to not write a function that is not pure. But every time you write a function ask yourself:
+
+* Can I request the stuff that I need through parameters instead of accessing them directly and get the same results?
+* Can I return a value instead of changing a value from the outside directly and get the same results?
+* Do I get the same result for passing the same arguments every time?
+
+* function is considered pure if it is NOT:
+- Making an HTTP request
+- Mutating data
+- Printing to a screen or console
+- DOM Query/Manipulation
+- Math.random()
+- Getting the current time
+	Date.now()
+
+* inherently IMPURE functions 
+- arr.splice()
+- arr.push()
+- arr.sort()
+- console.log() and alert() are also impure functions 
+	(although they generate the same behavior and 
+	always return the same value for identical calls,
+	but they do change the UI look).
+
+```javascript
+// Pure function
+function increaseByOne(numbers) {
+    let result = [];
+    for(let i = 0; i < numbers.length; i++) {
+        result.push(numbers[i] + 1)
+    }
+    return result;
+}
+
+// Impure function  ( using a variable from the outside )
+let one = 1
+function increaseByOne(numbers) {
+    let result = [];
+    for(let i = 0; i < numbers.length; i++) {
+        result.push(numbers[i] + one)
+    }
+    return result;
+}
+// Impure function ( mutating data from the outside )
+function increaseByOne(numbers) {
+    let result = [];
+    for(let i = 0; i < numbers.length; i++) {
+        numbers[i] += 1
+    }
+    return numbers;
+}
+
+// Impure function ( changing the DOM outside of the function )
+function increaseByOne(numbers) {
+    let result = [];
+    for(let i = 0; i < numbers.length; i++) {
+		result.push(numbers[i] + 1)
+        document.getElementById("result") += numbers[i] + " ";
+    }
+    return result;
+}
+```
+
+## What is strict typing in JavaScript?
+
+Javascript lets us do all sorts of magic things. But some might say it is too flexible of a language. For this reason, for securing our code from ourselves and our mistakes as developers, something that is called **strict** typing exists. We tell at the start of our script or the start of a function **'use strict';**. With this, some extra rules are applied to your javascript code. Some of those are:
+
+* Not allowed to pass value to an undeclared variable
+* Not allowing to delete variables, functions, or objects
+* Not allowing declaring two parameters of a function with the same name
+* Some extra names are not allowed to be used as variables ( are reserved for the language itself)
+
+```javascript
+'use strict';
+// These lines of code will throw an error if we use strict
+number = 15; // no declaration
+delete number; // cant delete stuff
+function sum(num1, num1){ return num1 + num1 }; // same parameter names
+let eval = 5; // cant use keyword eval
+let arguments = 2; // cant use ketworkd arguments
+```
+
+## Extra materials 📘
+* [First class functions](https://medium.freecodecamp.org/discover-the-power-of-first-class-functions-fd0d7b599b69)
+* [Filter,map,reduce] (https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/)
+* [Pure functions and how to write them](https://blog.bitsrc.io/understanding-javascript-mutation-and-pure-functions-7231cc2180d3)

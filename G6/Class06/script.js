@@ -66,6 +66,9 @@ let students = [
 ]
 
 //Higher-order functions
+
+
+
 // forEach
 
 //without higher-order func
@@ -113,11 +116,11 @@ let above18Arrow = students.filter(student => student.age >= 18);
 
 above18.forEach(x => console.log(`${x.firstName} ${x.lastName}`));
 
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let numbersArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-numbers.forEach(number => console.log(number));
+numbersArr.forEach(number => console.log(number));
 
-let filteredNumbers = numbers.filter(number => number > 3).forEach(x => console.log(x));
+let filteredNumbers = numbersArr.filter(number => number > 3).forEach(x => console.log(x));
 
 console.log(filteredNumbers);
 
@@ -170,3 +173,73 @@ console.log(allGradesExceptLowestHoArrow);
 // // itn. itn.
 // // step 16: sum = 19;
 // // step 17 return suma;
+
+let numbers = [5, 8, 2, 1, 10];
+
+function sortNumbers(numbers) {
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            if (numbers[i] < numbers[j]) {
+                let temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
+            }
+        }
+    }
+    return numbers;
+}
+
+let sortedNumbers = sortNumbers(numbers);
+console.log(sortedNumbers); // sorted
+console.log(numbers); // also sorted
+console.log("Sorted successfully!");
+
+//sort HoF
+numbers.sort((number1, number2) => number2 - number1);
+
+function copiedArray(numbers) {
+    let copyArray = [];
+    numbers.forEach(number => { copyArray.push(number) });
+    return copyArray;
+}
+
+let sortedNums = copiedArray(numbers);
+sortedNums.sort((number1, number2) => number2 - number1);
+
+console.log(sortedNums);
+console.log(numbers);
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+console.log(add(1, 2));
+
+let obj = { a: 1 }
+
+const pureFunc = (input) => {
+    let output = input.a + 1;
+    return output;
+}
+
+let numbs = [1, 2, 3, 4, 5];
+
+function increaser(numbs) {
+    let result = [];
+    for (let i = 0; i < numbs.length; i++) {
+        result.push(numbs[i] + 1)
+    }
+    return result;
+}
+
+console.log(increaser(numbs));
+console.log(numbs);
+
+console.log(Math.random());
+
+'use strict';
+
+let num = 1;
+
+function sum(num, num) { return (num + num); };
+console.log(sum(num, num));
