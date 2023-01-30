@@ -9,30 +9,30 @@ const apiParameters = {
     imgUrl: ` http://openweathermap.org/img/wn/`,
 }
 
-    const getLocation =  () => {
-        return new Promise((resolve, reject) => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition( (position) =>{
-                    return resolve(position);
-                },  (err)=> {
-                    return reject(err);
-                });
-            } else {
-                return reject("Geolocation is not supported by this browser.");
-            }
-        })
-    };
-
-     getLocation()
-        .then(position=>{
-        // const {latitude, longitude} = position.coords;
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
-        fetch(`${apiParameters.apiFirstUrl}?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiParameters.apiKey}&exclude=minutely`)
-
-        
+const getLocation =  () => {
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition( (position) =>{
+                return resolve(position);
+            },  (err)=> {
+                return reject(err);
+            });
+        } else {
+            return reject("Geolocation is not supported by this browser.");
+        }
     })
+};
+
+getLocation()
+    .then(position=>{
+    // const {latitude, longitude} = position.coords;
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    fetch(`${apiParameters.apiFirstUrl}?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiParameters.apiKey}&exclude=minutely`)  
+        .then(data=>data.json())
+        .then(data=>console.log(data))      
+})
 
 
 

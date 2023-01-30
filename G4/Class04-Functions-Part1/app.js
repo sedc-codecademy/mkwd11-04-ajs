@@ -171,3 +171,5 @@ console.log(test);
 function printSomething() {
   console.log("I am printing something");
 }
+
+console.log(String(9990));
