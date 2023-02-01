@@ -19,6 +19,10 @@ After the user clicks the button to get the first 10 planets, a button should be
 
 **API URL: ** https://swapi.dev/api/planets/?page=2
 
+## Bonus
+
+- Use map to generate the html for the planets
+
 ## Tips
 
 - Try to use only arrow functions to practice them
