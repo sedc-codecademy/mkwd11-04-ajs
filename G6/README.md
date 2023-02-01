@@ -34,5 +34,5 @@ This repository will contain every piece of material about the subject. It will 
 
 ## Contact
 
-* Trainer: trainer@mail.com
+* Trainer: Ivo Kostovski - ivo.kostovski@gmail.com
 * Assistant: assistant@mail.com
