@@ -216,6 +216,8 @@ console.log(sumNumbers(numbers));
 
 // const sum = numbers.reduce((acc, num) => acc + num, 0);
 
+const randomNums = [3, 4, 2, 1, 2];
+
 const sum = numbers.reduce((acc, num) => {
   console.log(`Accumulator `, acc);
   console.log(`Num `, num);
