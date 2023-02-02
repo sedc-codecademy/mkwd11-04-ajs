@@ -36,3 +36,39 @@
 // setInterval(() => {
 //     console.log(number += 1)
 // }, 1000)
+
+console.log('pred fetch')
+
+let luke;
+
+fetch('https://swapi.dev/api/people/1/')
+    .then((response) => response.json())
+    .then((myJson) => {
+        luke = myJson
+        console.log('luke vnatre', luke.name)
+    })
+
+// setTimeout(() => {
+//     console.log('luke nadvor', luke.name)
+// }, 100000)
+
+console.log('luke nadvor', luke)
+
+console.log('posle fetch')
+
+
+// fetch('https://swapi.dev/api/people/1/')
+//     .then((response) => response.json())
+//     .then((myJson) => {
+//         console.log('luke vnatre', luke.name)
+//         console.log("posle luke")
+//     })
+//     .catch((error) => {
+//         console.log('error', error)
+//     })
+//     .finally(() => {
+//         console.log('finally')
+//     })
+
+    // JSON.parse('{}')
+    // JSON.stringify()
