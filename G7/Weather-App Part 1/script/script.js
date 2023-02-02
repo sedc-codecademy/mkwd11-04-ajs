@@ -1,12 +1,12 @@
-const citySearchInput = document.getElementById("citySearchInput");
-const citySearchBtn = document.getElementById("citySearchBtn");
+let citySearchInput = document.getElementById("citySearchInput");
+let citySearchBtn = document.getElementById("citySearchBtn");
 let forecastResult = document.getElementById("forecastResult");
 
 // **** API CALL ****
 
 let searchForecastForCity = (cityName = "Gevgelija") => {
-  const API_KEY = "2095b65c75e8d13fe9e3b0e095b36936";
-  const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
+  let API_KEY = "2095b65c75e8d13fe9e3b0e095b36936";
+  let API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
 
   fetch(API_URL)
     .then((response) => {
