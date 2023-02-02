@@ -11,7 +11,7 @@ const multiplyTwoNumbrs = (numOne, numTwo) => numOne * numTwo;
 
 console.log(addTwoNumbers(10, 20));
 
-// 2. Stroed in an array (extremely rare and not used anywhere)
+// 2. Stored in an array (extremely rare and not used anywhere)
 
 const mathFunctions = [(numOne, numTwo) => numOne + numTwo, multiplyTwoNumbrs];
 
@@ -159,7 +159,7 @@ console.log(filteredStudents);
 
 // 3. map
 
-const numbers = [3, 4, 1, 6, 5, 4, 7, 8];
+const numbers = [-100, 3, 4, 1, 6, 5, 4, 7, 8];
 
 // without map
 const generateStudentInfo = students => {
@@ -216,6 +216,8 @@ console.log(sumNumbers(numbers));
 
 // const sum = numbers.reduce((acc, num) => acc + num, 0);
 
+const randomNums = [3, 4, 2, 1, 2];
+
 const sum = numbers.reduce((acc, num) => {
   console.log(`Accumulator `, acc);
   console.log(`Num `, num);
@@ -237,6 +239,38 @@ const filterJohn = students.filter(student => student.firstName === "sdsdsd");
 
 console.log(filterJohn);
 
+// 6. Some
+// Returns true if at least one element in the array passes condition otherwise it returns false
+console.log(
+  "Some Output: ",
+  numbers.some(num => num < 0)
+);
+
+// 7. Every
+// Returns true only if all elements in the array pass the condition otherwise it returns false
+console.log(
+  "Every Output: ",
+  numbers.every(num => num > 0)
+);
+
+// 8. Sort
+
+console.log("Numbers before sort ", numbers);
+
+numbers.sort();
+
+console.log("Numbers after sort ", numbers);
+
+console.log("Students before sort ", students);
+
+const studentsCopy = students.map(student => student);
+
+studentsCopy.sort((a, b) => a.age - b.age);
+studentsCopy.push("test", "rest", "best");
+
+console.log("Original students ", students);
+console.log("Copy students ", studentsCopy);
+
 // Method chaining
 
 // const topStudents = students.filter(student => student.averageGrade >= 4);
@@ -253,4 +287,61 @@ const topStudentsInfo = students
       `${student.firstName} ${student.lastName}, Avg Grade: ${student.averageGrade}`
   );
 
-console.log(topStudentsInfo);
+// console.log(topStudentsInfo);
+
+// Exercise
+
+const fetchStudents = () => {
+  fetch(
+    "https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/Samples/students_v2.json"
+  )
+    .then(res => res.json())
+    .then(students => generateSolutions(students));
+};
+
+const generateSolutions = students => {
+  const higerThanThreeGrade = students.filter(
+    student => student.averageGrade > 3
+  );
+  console.log(higerThanThreeGrade);
+  console.log(
+    students.filter(
+      student => student.gender === "Female" && student.averageGrade === 5
+    )
+  );
+  console.log(
+    students
+      .filter(
+        student =>
+          student.city === "Skopje" &&
+          student.gender === "Male" &&
+          student.age > 18
+      )
+      .map(student => `${student.firstName} ${student.lastName}`)
+  );
+  console.log(
+    students
+      .filter(student => student.gender === "Female" && student.age > 24)
+      .map(student => student.averageGrade)
+  );
+  console.log(
+    students.filter(
+      student =>
+        student.gender === "Male" &&
+        student.averageGrade > 2 &&
+        student.firstName[0] === "B"
+    )
+  );
+};
+
+// fetchStudents();
+
+// Mapping data into html elements
+
+const studentsHTML = students
+  .map(
+    student => `<div><h2>${student.firstName} ${student.lastName}</h2></div>`
+  )
+  .join("");
+
+console.log(studentsHTML);

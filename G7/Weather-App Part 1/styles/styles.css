@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/image-3.jpg");
+  /* background-repeat: repeat; */
+  background-size: cover;
+  height: 100vh;
+}
+
+.navbar-color {
+  background-color: #21252944;
+}
+
+#pages {
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-page {
+  margin-top: 5rem;
+  max-width: fit-content;
+  background-color: #e3f2fd1e;
+}
+
+.forecast-result {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.city-forecast-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-color-one {
+  color: #161818de;
+}
