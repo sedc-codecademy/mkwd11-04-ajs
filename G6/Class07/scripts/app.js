@@ -149,8 +149,13 @@
 
 // const numbers = [100, 5, 5, 10, 1, 29, 6];
 
-// const ascSortedNumbers = numbers.sort((a, b) => a - b)
-// console.log(ascSortedNumbers)
+// const ascSortedNumbers = numbers;
+// const ascSortedNumbers = [...numbers]
+
+// ascSortedNumbers.sort((a, b) => a - b)
+
+// console.log('original', numbers)
+// console.log('sorted', ascSortedNumbers)
 
 // const dscSortedNumbers = numbers.sort((a, b) => b - a)
 // console.log(dscSortedNumbers)
@@ -161,8 +166,6 @@
 //     console.log('res', a - b)
 //     return a - b
 // })
-
-// console.log(ascSortedNumbers)
 
 // const numbers = [100, 5, 5, 10, 1, 29, 6];
 
@@ -208,3 +211,100 @@
 // console.log(areAllEvenNumbers)
 // console.log(areAllOddNumbers)
 
+// [slice]
+// const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+// const weekend = daysOfTheWeek.slice(5, 7)
+// const workdays = daysOfTheWeek.slice(0, 5)
+
+// console.log(daysOfTheWeek)
+// console.log(weekend)
+// console.log(workdays)
+
+// console.log(daysOfTheWeek.slice(-2))
+
+// [splice]
+// const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+// const workdays = [...daysOfTheWeek].splice(0, 5)
+// const weekend = [...daysOfTheWeek].splice(5, 2)
+
+// console.log(daysOfTheWeek)
+// console.log(weekend)
+// console.log(workdays)
+
+// [includes]
+
+// const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+// const hasMondayCapitalized = daysOfTheWeek.includes('Monday')
+// const hasMonday = daysOfTheWeek.includes('monday')
+
+// console.log(hasMondayCapitalized)
+// console.log(hasMonday)
+
+// [find]
+// const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+// const monday = daysOfTheWeek.find((day) => day === 'Monday')
+
+// console.log(monday)
+
+
+// [findIndex]
+
+// const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+// const index = daysOfTheWeek.findIndex((day) => day === 'Tuesday')
+// const jIndex = daysOfTheWeek.findIndex((day) => day === 'January')
+
+// console.log(index)
+// console.log(jIndex)
+
+//alternative to includes
+// console.log(index !== -1)
+// console.log(jIndex !== -1)
+
+// [split]
+
+// const banana = 'banana'
+
+// const bananaArr = banana.split('')
+
+// console.log(bananaArr)
+
+// const ivo = 'Ivo Kostovski'
+
+// const fNameLname = ivo.split(' ')
+
+// console.log(fNameLname)
+
+// [join]
+
+// const fullName = fNameLname.join(' ')
+
+// console.log(fullName)
+
+// [reverse]
+
+// const banana = 'banana';
+// console.log(banana)
+
+// const splittedBanana = banana.split('')
+// console.log(splittedBanana)
+
+// const reversedBanana = splittedBanana.reverse()
+// console.log(reversedBanana)
+
+// const joinedBanana = reversedBanana.join('')
+// console.log(joinedBanana)
+
+// const ultimateBanana = banana.split('').reverse().join('');
+
+// console.log(ultimateBanana)
+
+
+
+
+// const numbers = [1, 2, 3]
+// const test = numbers.map(num => num * 2).forEach((number) => number).filter()
