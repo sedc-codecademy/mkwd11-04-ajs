@@ -89,4 +89,37 @@ Object.seal(appConfiguration);
 delete appConfiguration.apiKey;
 appConfiguration.encoding = "UTF8";
 
-console.log(appConfiguration);
+// console.log(appConfiguration);
+
+
+let trainer = {
+    firstName: 'Trajan',
+    lastName: 'Stevkovski',
+    age: 33,
+    academy: 'Web Development',
+    courses: ['javascript basic', 'javascript advanced', 'html', 'css']
+};
+
+let objectKeys = Object.keys(trainer);
+// console.log(objectKeys);
+
+// for(let key of Object.keys(trainer)) {
+//     console.log(key);
+//     console.log(trainer[key]);
+// }
+
+// for(let key in trainer) {
+//     console.log(key);
+// }
+
+let objectValues = Object.values(trainer);
+// console.log(objectValues);
+
+
+let entries = Object.entries(trainer);
+// console.log(entries);
+
+for(let [key, value] of entries) {
+    console.log(key);
+    console.log(value);
+}
