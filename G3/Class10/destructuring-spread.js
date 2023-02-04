@@ -62,7 +62,7 @@ let trainer10 = {
     academy: 'Web Development',
     courses: ['javascript basic', 'javascript advanced', 'html', 'css']
 };
-
+            // change the name of the variable, use the same name, give default value to parameter
 function printCourses({ firstName: name, lastName, courses = [] }) {
     console.log(name, lastName);
     console.log(courses);
