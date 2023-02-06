@@ -137,5 +137,8 @@ function FloatingVehicles(id, name, batch, price, hasEngine, seats) {
 
 
 function Kajce(id, name, batch, price, hasEngine, hasPlatno) {
+    Object.setPrototypeOf(
+        this, new FloatingVehicles(id, name, batch, price, hasEngine, 4));
     // some code 
+    this.hasPlatno = false;
 }
