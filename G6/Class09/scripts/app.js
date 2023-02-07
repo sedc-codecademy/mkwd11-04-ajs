@@ -41,15 +41,15 @@
 // 1. Pending
 // 2. Fulfilled / Rejected
 
-// const first = (isOk) => {
-//     return new Promise((resolve, reject) => {
-//         if (isOk) {
-//             resolve('ok')
-//         } else {
-//             reject('not ok')
-//         }
-//     })
-// }
+const first = (isOk) => {
+    return new Promise((resolve, reject) => {
+        if (isOk) {
+            resolve('ok')
+        } else {
+            reject('not ok')
+        }
+    })
+}
 
 // first(true)
 //     .then(data => {
@@ -71,7 +71,7 @@
 //         fetch(`https://raw.githubusercontent.com/sedc-codecademy/mkwd11-04-ajs/main/G6/Class09/data/documents.json`)
 //             .then(response => {
 //                 if (response.ok) {
-//                     return response.json()
+                    // return response.json()
 //                 } else {
 //                     reject('Documents fetching failed.')
 //                     // throw new Error('')
@@ -178,13 +178,22 @@ const getDocuments = () => {
 }
 
 const showDocuments = (documents) => {
+    console.log('showDocuments', documents)
     documents.forEach(document => {
         console.log(`${document.name}.${document.type} ${document.size}MB`)
     });
 }
 
 const getImportantDocuments = (documents) => {
-    return documents.filter(document => document.important)
+    return new Promise((resolve, reject) => {
+        const importantDocuments = documents.filter(document => document.important)
+
+        if (importantDocuments.length > 0) {
+            resolve(importantDocuments)
+        } else {
+            reject('There are no important documents.')
+        }
+    })
 }
 
 const checkDocuments = (documents) => {
@@ -197,10 +206,32 @@ const checkDocuments = (documents) => {
     }
 }
 
-getDocuments()
-    .then(documents => {
+// const showImportantDocuments = async () => {
+//     try {
+//         const documents = await getDocuments()
+//         checkDocuments(documents)
+//         const importantDocuments = await getImportantDocuments(documents)
+//         showDocuments(importantDocuments)
+    
+//     } catch (error) {
+//         console.log('ERROR: ', error)
+//     }
+
+//     console.log('Finally: The end')
+// }
+
+async function showImportantDocuments() {
+    try {
+        const documents = await getDocuments()
         checkDocuments(documents)
-        const importantDocuments = getImportantDocuments(documents)
+        const importantDocuments = await getImportantDocuments(documents)
         showDocuments(importantDocuments)
-    })
-    .catch(error => console.log(error))
+    
+    } catch (error) {
+        console.log('ERROR: ', error)
+    }
+
+    console.log('Finally: The end')
+}
+
+showImportantDocuments()
