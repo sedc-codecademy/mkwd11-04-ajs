@@ -103,3 +103,17 @@ console.log(myElectricCar);
 console.log(myElectricCar.owner);
 
 myElectricCar.owner = "Trajan";
+
+
+function checkIfElectricCar(input) {
+    if(input instanceof ElectricCar) {
+        console.log("It is electric");
+    } else {
+        console.log("It is diesel");
+    }
+}
+
+checkIfElectricCar(myElectricCar);
+checkIfElectricCar(acar);
+
+
