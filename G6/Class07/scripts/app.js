@@ -1,6 +1,6 @@
-// console.log('Raboti')
+// -- [HOF] Higher Order Functions - Recap --
 
-// Functions
+// [Assigning function to a variable]
 
 // function sayHello() {
 //     console.log('hello')
@@ -13,6 +13,9 @@
 // }
 
 // sayHello();
+
+
+// [Functions either return value OR void (nothing)]
 
 // VOID
 // const saySomething = (word) => {
@@ -39,7 +42,8 @@
 // console.log('value1', value1)
 // console.log('value2', value2)
 
-// 
+
+// [Passing a reference to a function VS Calling the function]
 
 // function calculator(calculateFn, number1, number2) {
 //     return calculateFn(number1, number2);
@@ -59,7 +63,8 @@
 // console.log(calculator(difference, 15, 5))
 // console.log(calculator(sum, sum(1, 1), 10))
 
-// [Higher order functions]
+
+// [map]
 
 // const numbers = [1, 2, 3, 4, 5];
 
@@ -67,6 +72,7 @@
 
 // console.log('PRED', numbersTimesTwo)
 
+// Without HOF
 // for (const number of numbers) {
 //     const numberTimesTwo = number * 2;
 //     numbersTimesTwo.push(numberTimesTwo)
@@ -74,10 +80,12 @@
 
 // console.log('Potoa', numbersTimesTwo)
 
+// With HOF
 // const numbersTimesTwo = numbers.map((number) => number * 2)
 
 // const numbersTimesTwo = []
 
+// forEach
 // numbers.forEach((number) => {
 //     numbersTimesTwo.push(number * 2)
 // })
@@ -86,6 +94,7 @@
 
 // const numbersTimesTwo = []
 
+// filter
 // numbers.filter((number) => {
 //     numbersTimesTwo.push(number * 2)
 //     return true;
@@ -97,12 +106,14 @@
 
 // const numberLargerThanTwo = [];
 
+// filtering without using .filter()
 // for (const number of numbers) {
 //     if (number > 2) {
 //         numberLargerThanTwo.push(number)
 //     }
 // }
 
+// filter required boolean to filter out elements
 // const numberLargerThanTwo = numbers.filter((number) => {
 //     if (number > 2) {
 //         return true
@@ -125,6 +136,7 @@
 
 // console.log(numberLargerThanTwo)
 
+
 // [reduce]
 
 // const numbers = [0, 1, 2, 3, 4, 5];
@@ -144,6 +156,7 @@
 // let sum = numbers.reduce((acc, curr) => acc + curr, '')
 
 // console.log(sum, typeof sum)
+
 
 // [sort]
 
@@ -167,6 +180,7 @@
 //     return a - b
 // })
 
+// Sorting without .sort()
 // const numbers = [100, 5, 5, 10, 1, 29, 6];
 
 // let done = false;
@@ -187,6 +201,7 @@
 
 // console.log(numbers)
 
+
 // [some]
 
 // const numbers = [100, 5, 5, 10, 1, 29, 6];
@@ -196,6 +211,7 @@
 
 // console.log(hasEvenNumbers)
 // console.log(hasOddNumbers)
+
 
 // [every]
 
@@ -211,6 +227,7 @@
 // console.log(areAllEvenNumbers)
 // console.log(areAllOddNumbers)
 
+
 // [slice]
 // const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -223,6 +240,7 @@
 
 // console.log(daysOfTheWeek.slice(-2))
 
+
 // [splice]
 // const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -233,6 +251,7 @@
 // console.log(weekend)
 // console.log(workdays)
 
+
 // [includes]
 
 // const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -242,6 +261,7 @@
 
 // console.log(hasMondayCapitalized)
 // console.log(hasMonday)
+
 
 // [find]
 // const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -265,6 +285,7 @@
 // console.log(index !== -1)
 // console.log(jIndex !== -1)
 
+
 // [split]
 
 // const banana = 'banana'
@@ -279,11 +300,13 @@
 
 // console.log(fNameLname)
 
+
 // [join]
 
 // const fullName = fNameLname.join(' ')
 
 // console.log(fullName)
+
 
 // [reverse]
 
