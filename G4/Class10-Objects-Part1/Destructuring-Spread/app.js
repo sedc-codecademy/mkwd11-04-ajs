@@ -140,13 +140,101 @@ const carInfo = {
   ...engineInfo,
 };
 
+// Object.assign can be used to combine objects as the example above
+
+const carInfoCopyAssign = Object.assign({}, bodyInfo, engineInfo);
+
+console.log("Assign object", carInfoCopyAssign);
+
 console.log(carInfo);
 
 // copying objects with spred
 
 const carInfoCopy = { ...carInfo };
 
+// Object.create can be used to create a copy of another object
+
+const carInfoCopyCreate = Object.create(carInfo);
+
+console.log("Create object", carInfoCopyCreate);
+
 carInfoCopy.isBroken = true;
 carInfoCopy.wheelSize = 10;
 
 console.log(carInfo);
+
+// Object.keys returns an array of all the keys in an object
+
+const carInfoKeys = Object.keys(carInfo);
+
+console.log("Object keys", carInfoKeys);
+
+// Object.values returns an array of all the values in an object
+
+const carInfoValues = Object.values(carInfo);
+
+console.log("Object Values", carInfoValues);
+
+// Object.entires returns an array with nested arrays that contain the keys and values of an object
+
+const carInfoEntries = Object.entries(carInfo);
+
+console.log("Object Entries", carInfoEntries);
+
+// Dynamically adding properties to an object
+
+const newKeys = ["isEuroSix", "isAffordable", "isRegistered"];
+
+newKeys.forEach(key => {
+  carInfo[key] = true;
+});
+
+console.log(carInfo);
+
+// Chad wants to be a straight 5 student
+const badStudent = {
+  name: "Chad",
+  grades: {
+    basicHtml: 1,
+    basicJs: 1,
+    advancedJs: 1,
+    basicNode: 1,
+    advancedNode: 1,
+  },
+};
+
+// Dynamically using object.keys to change properties
+const gradeKeys = Object.keys(badStudent.grades);
+
+gradeKeys.forEach(key => {
+  badStudent.grades[key] = 5;
+});
+
+console.log(badStudent);
+
+// Object.seal prevents adding of new properties but allows for editing of existing ones
+
+const american = {
+  name: "Bob Bobsky",
+  country: "USA",
+};
+
+Object.seal(american);
+american.isCrazy = true;
+
+// american.name = "Vladimir Prutin";
+
+console.log(american);
+
+// Object.freeze prevents editing of properties and adding new properties
+
+const frenchmen = {
+  name: "Jacque",
+  country: "France",
+};
+
+Object.freeze(frenchmen);
+
+frenchmen.name = "Bobby";
+
+console.log(frenchmen);
