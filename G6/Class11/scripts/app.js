@@ -145,6 +145,64 @@
 // mike.heal()
 // martin.heal()
 
+// function Vehicle (id, name, batchNo, price) {
+//     this.id = id;
+//     this.name = name;
+//     this.batchNo = batchNo;
+//     this.price = price;
+//     this.company = 'Move Inc.'
+//     this.printVehicle = function () {
+//         console.log(`${this.id}. ${this.name}, Batch No.: ${this.batchNo} - ${this.price}$`)
+//     }
+// }
+
+// let wheeledVehicle = Object.create(new Vehicle(1, 'Opel', '123', 1000));
+// console.log(wheeledVehicle)
+// wheeledVehicle.printVehicle()
+// wheeledVehicle.drive = function () {
+//     console.log(`Started driving!`);
+// }
+// let car = Object.create(wheeledVehicle);
+// car.name = 'Peugeot'
+// car.id = 2;
+// console.log(car)
+// car.drive()
+// car.printVehicle()
+
+// function WheeledVehicle(id, name, batchNo, price, wheels) {
+//     Vehicle.call(this, id, name, batchNo, price);
+//     this.wheels = wheels;
+// }
+
+// Vehicle.prototype.drive = function () {
+//     console.log(`Started driving!`);
+// }
+
+// WheeledVehicle.prototype = Object.create(Vehicle.prototype)
+
+// let car = new WheeledVehicle(4, 'VW', 'abc', 2000, 4)
+
+// let car2 = new Vehicle(2, 'Yugo', 'uiyot', 500)
+
+// console.log(car)
+
+// // car.__proto__.__proto__.drive()
+// car.drive()
+
+// WheeledVehicle.prototype.stop = function () {
+//     console.log('Stopped driving.')
+// }
+
+// car.stop()
+
+// car2.drive()
+
+// // car2.stop()
+
+// console.log(car2)
+
+// Classes
+
 function Vehicle (id, name, batchNo, price) {
     this.id = id;
     this.name = name;
@@ -156,21 +214,60 @@ function Vehicle (id, name, batchNo, price) {
     }
 }
 
-let wheeledVehicle = Object.create(new Vehicle(1, 'Opel', '123', 1000));
+// class Vehicle {
+//     constructor(id, name, batchNo, price) {
+//         this.id = id;
+//         this.name = name;
+//         this.batchNo = batchNo;
+//         this.price = price;
+//         this.company = 'Move Inc.'
+//     }
+//     #password = 'secret password';    
 
-console.log(wheeledVehicle)
-wheeledVehicle.printVehicle()
+//     printVehicle() {
+//         console.log(`${this.id}. ${this.name}, Batch No.:${this.batchNo} - ${this.price}$`)
+//     }
 
-wheeledVehicle.drive = function () {
-    console.log(`Started driving!`);
+//     printPassword() {
+//         console.log(this.#password)
+//     }
+// }
+
+// class WheeledVehicle extends Vehicle {
+//     constructor(id, name, batchNo, price, wheels) {
+//         super(id, name, batchNo, price)
+//         this.wheels = wheels;
+//     }
+// }
+
+// let boat = new Vehicle(2, 'Boat', 'SK123', 10000)
+
+// let car = new WheeledVehicle(3, 'Yugo', 'BT123', 300, 4)
+
+// console.log(boat)
+// console.log(car)
+
+// car.printVehicle()
+// console.log(boat.company)
+// console.log(boat.#password)
+// boat.printVehicle()
+// boat.printPassword()
+
+// Get and Set
+
+class Dog {
+    constructor(name, age, breed, owner) {
+        this.name = name;
+        this.age = age;
+        this.breed = breed;
+        // This value is set while initializing new instances of the Dog class
+        // this.isPuppy = age < 1 ? 'This is a puppy' : 'This is not a puppy';
+    }
+
+    get isPuppy() {
+        return this.age < 1 ? 'This is a puppy' : 'This is not a puppy';
+    }
 }
 
-let car = Object.create(wheeledVehicle);
-
-car.name = 'Peugeot'
-car.id = 2;
-
-console.log(car)
-
-car.drive()
-car.printVehicle()
+let mike = new Dog('Mike', 5, 'German Shepard', 'Ivo')
+console.log(mike.owner)
