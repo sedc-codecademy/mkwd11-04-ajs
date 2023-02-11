@@ -83,6 +83,7 @@ personOne.printPersonInfo();
 class Professional extends Person {
   constructor(firstName, lastName, age, yearsOfExperience, industry) {
     // super() always needs to be called for classes that inherit from others
+    // the super function always refers to the parent's constructor function
     super(firstName, lastName, age);
 
     this.industry = industry;
@@ -140,3 +141,111 @@ console.log(danilo);
 danilo.printPersonInfo();
 danilo.printWorkerInfo();
 danilo.printProgrammerInfo();
+
+// Checking if objects are instances of some class
+// Returns true for any class that the parent class inherits for the object
+console.log(danilo instanceof Programmer); //true
+console.log(danilo instanceof Professional); //true
+console.log(workerOne instanceof Programmer); //false
+console.log(workerOne instanceof Person); //true
+
+class Doctor extends Professional {
+  constructor(
+    firstName,
+    lastName,
+    age,
+    yearsOfExperience,
+    specialization,
+    isCertified
+  ) {
+    super(firstName, lastName, age, yearsOfExperience, "Medicine");
+
+    this.specialization = specialization;
+    this.isCertified = isCertified;
+  }
+
+  helpPatient(patientName) {
+    if (this.isCertified) {
+      console.log(`Dr.${this.fullName} is helping ${patientName}`);
+    } else {
+      console.log(
+        ` ${this.fullName} can't help ${patientName} because doctor is not certified`
+      );
+    }
+  }
+
+  static checkCertification(doctor) {
+    if (doctor instanceof Doctor) {
+      return doctor.isCertified
+        ? `Doctor is certified`
+        : `Doctor is not certified`;
+
+      //   if (doctor.isCertified) {
+      //     return `Doctor is certified`;
+      //   } else {
+      //     return `Doctor is not certified`;
+      //   }
+    }
+  }
+}
+
+const doctorRandall = new Doctor(
+  "Randall",
+  "Jackson",
+  54,
+  30,
+  "Trauma Surgeon",
+  true
+);
+
+const doctorZhan = new Doctor("Zhan", "Mitrev", 25, 0, "Everything", false);
+
+doctorRandall.helpPatient("Bob");
+
+// You call static methods on the class definition itself
+console.log(Doctor.checkCertification(doctorZhan));
+console.log(Doctor.checkCertification(doctorRandall));
+
+// Private fields in classes
+class BankAccount {
+  // Defining private properties
+  #accountHolder;
+  #balance;
+  #accountNumber;
+
+  constructor(accountHolder, balance, accountNumber) {
+    // Assigning values to private properties
+    this.#accountHolder = accountHolder;
+    this.#balance = balance;
+    this.#accountNumber = accountNumber;
+  }
+
+  //   getter returns a property with the name of the getter func
+  get accountHolder() {
+    console.log("Fetching account holder name");
+    return this.#accountHolder;
+  }
+
+  //   setter sets a property with the name of the setter func
+  set accountHolder(value) {
+    console.log("From setter func", value);
+    if (value.length < 3) return console.log("Invalid name, please try again");
+
+    this.#accountHolder = value;
+  }
+
+  // Use getters and setters to validate the change of the account number , it must be exactly 15 characters
+}
+
+const accountOne = new BankAccount("Borche Borisovski", 100, 20003212312323);
+
+console.log(accountOne);
+
+// Using getters
+// console.log(accountOne.accountHolder);
+// Using setters
+accountOne.accountHolder = "Da";
+
+accountOne.accountHolder = "Danilo Borozan";
+
+console.log(accountOne.accountHolder);
