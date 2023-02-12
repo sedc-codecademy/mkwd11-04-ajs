@@ -33,8 +33,3 @@ Student
 Make the functions StartAcademy and StartSubject dynamic.
 * StartAcademy - When the student calls StartAcademy, the student should also be added to the Academy property Students ( The academy that he is starting )
 * StartSubject - When the student calls StartSubject the student should also be added to the Subject property Students ( The subject that he is starting ). If there was another subject in the CurrentSubject property, that subject should be transferred to CompletedSubjects and then add the new Subject
-
-let student = new Student("", "".. ..)
-let student2 = new Student("", "".. ..)
-
-let academy = new Academy("SEDC", [student, student2])
