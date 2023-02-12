@@ -2,6 +2,26 @@ import Horse from "./models/animal/horse.js";
 import Pudlica from "./models/animal/pudlica.js";
 import Sarplaninec from "./models/animal/sarplaninec.js";
 import StarZenskiSarplaninec from "./models/animal/starZenskiSarplaninec.js";
+import Mammal from "./models/mammal.js";
+
+
+
+
+const horse1 = new Horse('Bukefal', 35, Horse.Gender.MALE);
+
+setInterval(() => {
+horse1.die()
+}, 1000)
+
+
+console.log(horse1 instanceof Horse);
+console.log(horse1 instanceof Mammal);
+
+let arr = [1, 2, 3];
+
+console.log(arr instanceof Array);
+
+
 
 // console.log('Main class');
 

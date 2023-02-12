@@ -1,10 +1,24 @@
 export default class Mammal {
+    static Gender = {
+        MALE: 'masko',
+        FEMALE: 'female'
+    }
+
+    static NumberOfLegs = {
+        TWO_LEGGED: 2,
+        FOUR_LEGGED: 4,
+    }
+
     constructor(name, age, gender) {
 
         this.type = this.constructor.name
         this.numberOfLegs;
 
-        this.gender = gender;
+        /**
+         * @type {Mammal.Gender}
+         */
+        this.gender = gender; // type Gender
+
         this.name = name;
         this.age = age;
 
@@ -16,11 +30,14 @@ export default class Mammal {
         this.isAlive = true;
     }
 
+    get currentTime() {
+        return new Date();
+    }
+
     die(causeOfDeath = 'natural causes') {
         this.isAlive = false;
         this.hasPulse = false;
         this.breaths = false;
-        this.causeOfDeath = causeOfDeath;
-        console.warn(`CAUSE OF DEATH: ${this.causeOfDeath}`);
+        console.warn(`CAUSE OF DEATH: ${causeOfDeath}, has died on ${this.currentTime}`);
     }
 }
