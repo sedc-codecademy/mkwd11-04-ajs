@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo app</title>
+    <link rel="stylesheet" href="assets/app.css" />
+    <script src="src/app.js" defer type="module"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Todo App</h1>
+    </header>
+    <main>
+      <section class="form-container">
+        <h2>Add Todo</h2>
+        <form class="todo-form">
+          <div class="form-control">
+            <label for="todoText">Todo Text</label>
+            <input name="todoText" id="todoText" required type="text" />
+          </div>
+          <div class="form-control">
+            <label for="todoPriority">Todo Priority</label>
+            <select name="todoPriority" id="todoPriority">
+              <option default value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Add</button>
+        </form>
+      </section>
+      <section class="list-container">
+        <h2>Todo List</h2>
+        <ul class="todo-list"></ul>
+      </section>
+    </main>
+  </body>
+</html>
