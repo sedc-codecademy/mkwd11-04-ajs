@@ -100,10 +100,10 @@ console.log(gjorge)
 
 // gjorge.printUserInfo()
 
-gjorge.printTrainerInfo()
+// gjorge.printTrainerInfo()
 
 // martin.printTrainerInfo()
 
-Trainer.addYearsOfExperience(gjorge)
+// Trainer.addYearsOfExperience(gjorge)
 
-console.log(gjorge)
+// console.log(gjorge)
