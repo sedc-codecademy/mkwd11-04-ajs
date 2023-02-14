@@ -1,6 +1,5 @@
 // SELECTORS
 
-
 // Pages
 const formPage = document.getElementById('form-page');
 const homePage = document.getElementById('home-page');
@@ -19,14 +18,30 @@ let posts = []
 
 // FUNCTIONS
 
-const changeDisplay = (showEl, hideEl) => {
-    hideEl.style.display = 'none';
-    showEl.style.display = 'block';
+const changeDisplay = (showEls = [], hideEls = [], activateLinks = [], deactivateLinks = []) => {
+    hideEls.forEach(el => el.style.display = 'none')
+    showEls.forEach(el => el.style.display = 'block')
+    deactivateLinks.forEach(link => link.classList.remove('active'))
+    activateLinks.forEach(link => link.classList.add('active'))
 }
 
-const init = () => {
-    getPosts()
-    changeDisplay(homePage, formPage)
+const renderPosts = () => {
+    bpContainer.innerHTML = ''
+
+    posts.forEach(post => {
+        bpContainer.innerHTML += `
+            <div class="col-sm mt-2" id="bp-element-${post.id}">
+              <div class="card">
+                <h5 class="card-header">${post.title}</h5>
+                <div class="card-body">
+                  <p class="card-text">
+                    ${post.body}
+                  </p>
+                </div>
+              </div>
+            </div>
+        `
+    })
 }
 
 const getPosts = async () => {
@@ -37,10 +52,10 @@ const getPosts = async () => {
 
 // EVENT HANDLERS
 navForm.addEventListener('click', () => {
-    changeDisplay(formPage, homePage)
+    changeDisplay([formPage], [homePage], [navForm], [navHome])
 })
 navHome.addEventListener('click', () => {
-    changeDisplay(homePage, formPage)
+    changeDisplay([homePage], [formPage], [navHome], [navForm])
 })
 
 // MODELS
@@ -53,5 +68,9 @@ function BlogPost(id, userId, title, body) {
 }
 
 // INIT
-
-init();
+(async () => {
+    changeDisplay([loader, homePage], [formPage], [navHome], [navForm])
+    await getPosts()
+    changeDisplay([bpContainer], [loader])
+    renderPosts()
+})()
