@@ -59,7 +59,7 @@ class Student {
     // should accept an instance (object) of the class Academy
     startAcademy(academyInput) {
         // checks if the parameter "academyInput" is object made from the class Academy (as instance it has all the propeties and methods from the class Academy)
-        if (!academyInput instanceof Academy) {
+        if (!(academyInput instanceof Academy)) {
             console.log("You entered invalid academy");
             return;
         }
@@ -80,6 +80,7 @@ let css = new Subject("CSS", false)
 let codeAcademy = new Academy("Code Academy", [], "15.10.2022", "15.10.2023", [html, css]);
 
 let student = new Student("Ivo", "Pivce", 22);
+// student.startAcademy(123);
 student.startAcademy(codeAcademy);
 console.log(student);
 console.log(codeAcademy);
