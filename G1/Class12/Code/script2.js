@@ -101,3 +101,66 @@ console.log(stojadin);
 Car.addAc(stojadin);
 
 
+class Calculation {
+    static pi = 3.14;
+
+    static sum(num1, num2){
+        return num1 + num2;
+    }
+
+    static difference(num1, num2){
+        return num1 - num2;
+    }
+
+    static circleArea(radius){
+       return this.pi * radius * radius;
+       //return Calculation.pi * radius * radius;
+    }
+}
+
+console.log(Calculation.pi);
+console.log(Calculation.sum(5, 8));
+console.log(Calculation.difference(8, Calculation.pi));
+console.log(Calculation.circleArea(2));
+
+// ---------Getter and Setter ---------------
+
+class ElectricCar extends Car {
+    constructor(id, name, batch, price, wheels, engineType, owner){
+        super(id, name, batch, price, wheels, engineType, true)
+
+        this.owner = owner;
+    }
+
+    get nameN(){
+         return this.name;
+        //return this.name + " mojata";
+    }
+
+    set nameN(newName){
+        this.name = newName;
+    }
+
+    get owner() {
+        console.log("We are getting the name of the owner!!!")
+        return `The owner od this car is ${this._owner}`
+    }
+
+    set owner(ownerName){
+        console.log("We are setting the name of the owner!!!");
+        ownerName.length > 1 ?
+        this._owner = ownerName :
+        (() => {throw new Error("The name is too short")})()
+    }
+}
+
+let myElectricCar = new ElectricCar(133, "Toyota", "asas2", 300000, 4, "hybrid", "Petre");
+console.log(myElectricCar.name);
+console.log(myElectricCar.nameN);
+myElectricCar.nameN = "Dani";
+console.log(myElectricCar.nameN);
+
+console.log(myElectricCar.owner);
+//console.log(myElectricCar._owner);
+myElectricCar.owner = "Ilija"
+//myElectricCar.owner = "I";
