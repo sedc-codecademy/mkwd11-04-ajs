@@ -36,3 +36,10 @@ The web page should be:
 9. Immediately the view changes to a new table with new ships and a previous button appears
 10. The person clicks on the previous button
 11. Impiety the view changes to a new table with the first ships and the previous button disappears
+
+
+# Extra features 🎈
+* Sorting in the tables
+* Loading animation while the application gets the data
+* Nice error message when a request has been denied ( Ex: unavailable, request limit, no page like that, access denied )
+* Add planets table ( SWAPI only )
