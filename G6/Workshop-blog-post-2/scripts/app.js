@@ -8,13 +8,21 @@ const homePage = document.getElementById('home-page');
 const navHome = document.querySelector('#nav-home')
 const navForm = document.querySelector('#nav-form')
 
+//Inputs
+const searchInput = document.getElementById('search');
+const bpTitleInput = document.getElementById('bp-title-input');
+const bpContentInput = document.getElementById('bp-content-input');
+
+//Buttons
+const submitBtn = document.getElementById('submit')
+
 // BP Elements
 const bpContainer = document.getElementById('blog-posts-container')
 const loader = document.getElementById('loader')
 
 // DATA
 const baseUrl = 'https://jsonplaceholder.typicode.com';
-let posts = []
+let allPosts = [];
 
 // FUNCTIONS
 
@@ -25,7 +33,7 @@ const changeDisplay = (showEls = [], hideEls = [], activateLinks = [], deactivat
     activateLinks.forEach(link => link.classList.add('active'))
 }
 
-const renderPosts = () => {
+const renderPosts = (posts) => {
     bpContainer.innerHTML = ''
 
     posts.forEach(post => {
@@ -47,7 +55,37 @@ const renderPosts = () => {
 const getPosts = async () => {
     const response = await fetch(`${baseUrl}/posts`)
     const data = await response.json()
-    posts = data.map(bp => new BlogPost(bp.id, bp.userId, bp.title, bp.body));
+    allPosts = data.map(bp => new BlogPost(bp.id, bp.userId, bp.title, bp.body));
+}
+
+const onSearch = (searchTerm) => {
+    const filteredPosts = allPosts.filter(post => post.title.includes(searchTerm.toLowerCase()))
+    renderPosts(filteredPosts)
+}
+
+const onFormSubmit = async (bpTitle, bpContent) => {
+    // validate inputs
+    if (!bpTitle || !bpContent) {
+        return
+    }
+
+    // submit blog post
+    const newBlogPost = new BlogPost(allPosts.length + 1, 1, bpTitle, bpContent)
+ 
+    const response = await fetch(`${baseUrl}/posts`, {
+        method: "POST",
+        body: JSON.stringify(newBlogPost),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        }
+    })
+    const { id, userId, title, body } = await response.json();
+    const createdBlogPost = new BlogPost(id, userId, title, body)
+    console.log(createdBlogPost)
+
+    // re-render blog posts
+
+    // go back to home page
 }
 
 // EVENT HANDLERS
@@ -57,6 +95,8 @@ navForm.addEventListener('click', () => {
 navHome.addEventListener('click', () => {
     changeDisplay([homePage], [formPage], [navHome], [navForm])
 })
+searchInput.addEventListener('input', (e) => onSearch(e.target.value))
+submitBtn.addEventListener('click', () => onFormSubmit(bpTitleInput.value, bpContentInput.value))
 
 // MODELS
 
@@ -72,5 +112,5 @@ function BlogPost(id, userId, title, body) {
     changeDisplay([loader, homePage], [formPage], [navHome], [navForm])
     await getPosts()
     changeDisplay([bpContainer], [loader])
-    renderPosts()
+    renderPosts(allPosts)
 })()
