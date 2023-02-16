@@ -19,6 +19,7 @@ const submitBtn = document.getElementById('submit')
 // BP Elements
 const bpContainer = document.getElementById('blog-posts-container')
 const loader = document.getElementById('loader')
+const errorEl = document.getElementById('error')
 
 // DATA
 const baseUrl = 'https://jsonplaceholder.typicode.com';
@@ -46,10 +47,18 @@ const renderPosts = (posts) => {
                     ${post.body}
                   </p>
                 </div>
+                <a href="#" class="btn btn-warning" id="comments-edit-${post.id}">Edit</a>
               </div>
             </div>
-        `
+        `        
     })
+
+    posts
+        .map(post => document.getElementById(`comments-edit-${post.id}`))
+        .forEach(btn => btn.addEventListener('click', (e) => {
+            const id = Number(e.target.id.split('-')[2])
+            onEditPost(id)
+        }))
 }
 
 const getPosts = async () => {
@@ -66,10 +75,12 @@ const onSearch = (searchTerm) => {
 const onFormSubmit = async (bpTitle, bpContent) => {
     // validate inputs
     if (!bpTitle || !bpContent) {
-        return
+        changeDisplay([errorEl])
+        throw new Error('Form is invalid')
     }
-
+    
     // submit blog post
+    changeDisplay([], [errorEl])
     const newBlogPost = new BlogPost(allPosts.length + 1, 1, bpTitle, bpContent)
  
     const response = await fetch(`${baseUrl}/posts`, {
@@ -81,11 +92,29 @@ const onFormSubmit = async (bpTitle, bpContent) => {
     })
     const { id, userId, title, body } = await response.json();
     const createdBlogPost = new BlogPost(id, userId, title, body)
-    console.log(createdBlogPost)
 
     // re-render blog posts
+    allPosts.unshift(createdBlogPost)
+    renderPosts(allPosts)
+
+    //clean up input
+    bpTitleInput.value = '';
+    bpContentInput.value = '';
 
     // go back to home page
+    changeDisplay([homePage], [formPage], [navHome], [navForm])
+}
+
+const onEditPost = (postId) => {
+    // change view to form
+    changeDisplay([formPage], [homePage], [navForm], [navHome])
+
+    // find blog post
+    const blogPost = allPosts.find((post) => post.id === postId)
+
+    // populate input fields
+    bpTitleInput.value = blogPost.title;
+    bpContentInput.value = blogPost.body;
 }
 
 // EVENT HANDLERS
@@ -109,7 +138,7 @@ function BlogPost(id, userId, title, body) {
 
 // INIT
 (async () => {
-    changeDisplay([loader, homePage], [formPage], [navHome], [navForm])
+    changeDisplay([loader, homePage], [formPage, errorEl], [navHome], [navForm])
     await getPosts()
     changeDisplay([bpContainer], [loader])
     renderPosts(allPosts)
