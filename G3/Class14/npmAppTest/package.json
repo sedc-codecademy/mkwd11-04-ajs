@@ -1,0 +1,16 @@
+{
+    "name": "secondtestapp",
+    "version": "15.0.0",
+    "description": "This is a demo application",
+    "main": "script.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "SEDC G3",
+    "license": "ISC",
+    "dependencies": {
+        "devextreme": "^22.2.4",
+        "jQuery": "^1.7.4",
+        "papaparse": "^5.3.2"
+    }
+}

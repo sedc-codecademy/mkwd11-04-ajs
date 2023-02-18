@@ -1,0 +1,17 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "This is a test application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SEDC G3",
+  "license": "ISC",
+  "dependencies": {
+    "jQuery": "^1.7.4",
+    "jquery-ui": "^1.13.2",
+    "object.assign": "^4.1.4",
+    "react": "^18.2.0"
+  }
+}
