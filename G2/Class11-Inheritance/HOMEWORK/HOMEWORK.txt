@@ -1,0 +1,6 @@
+1. Add printSpecs method to all mammals that will print out their properties, 
+BONUS: Make it to print all properties in single loop
+
+2. Create a human class and extend it from Mammal, add properties and methods unique to all humans
+
+3. extend 3 other classes of the human that will have their own methods (Worker, Musician, Artist, Farmer etc..)
