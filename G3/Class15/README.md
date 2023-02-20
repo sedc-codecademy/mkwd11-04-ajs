@@ -6,7 +6,7 @@
 
 Create a webpage that will display bands data on load.
 Bends data are available at :
-https://raw.githubusercontent.com/sedc-codecademy/sedc6-frontend-exam/master/band-data.json
+https://raw.githubusercontent.com/sedc-codecademy/mkwd11-04-ajs/main/G3/Class15/bands.json
 
 ### First requriment
 
