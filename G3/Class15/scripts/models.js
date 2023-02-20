@@ -8,15 +8,32 @@ class Band {
     }
 
     getTagsAsString() {
-
+        if(this.tags && this.tags.length > 0) {
+            return this.tags.join(", ");
+        }
+        return '';
     }
 
-    getCurrentMemebers() {
-        
+    getCurrentMembers() {
+        if(this.members && this.members.length > 0) {
+            return this.members.filter(member => !member.former);
+        }
+        return [];
     }
 
     getCurrentMembersAsString() {
+        let length = this.getCurrentMembers().length;
+        return this.getCurrentMembers()
+            .reduce((accumulator, currentValue, index) => {
+                return accumulator
+                .concat(currentValue.name)
+                .concat(length - 1 !== index ? ', ' : '')
+            }, '');
+        // return this.getCurrentMemebers().map(x => x.name).join(', ');
+    }
 
+    getAlbumsCount() {
+        return this.albums ? this.albums.length : 0;
     }
 }
 
