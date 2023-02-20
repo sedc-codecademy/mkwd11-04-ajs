@@ -33,3 +33,38 @@ function showBands(bands) {
         });
 })();
 
+let sortConfiguration = {
+    sortBy: '',
+    sortOrder: ''
+};
+Object.seal(sortConfiguration);
+
+document.getElementById('name').addEventListener('click', function() {
+    if(sortConfiguration.sortBy === 'name'){
+        sortConfiguration.sortOrder = 
+            sortConfiguration.sortOrder === 'asc' ? 'desc' : 'asc';
+    }else{
+        sortConfiguration.sortBy = 'name';
+        sortConfiguration.sortOrder = 'asc';
+    }
+
+    bandService.fetchBands()
+        .then(data => {
+            let sortFnc = 
+                sortConfiguration.sortOrder === 'asc' ? 
+                    (a,b) => a.name.localeCompare(b.name) :
+                    (a,b) => b.name.localeCompare(a.name);
+
+            showBands(data.sort(sortFnc));
+
+            let thName = document.getElementById('name');
+            let text = thName.innerText.slice(0, thName.innerText.length - 1); 
+            text += sortConfiguration.sortOrder === 'asc' ? "<" : ">";
+            thName.innerText = text;
+        })
+});
+
+document.getElementById('no-albums').addEventListener('click', function() {
+
+});
+
