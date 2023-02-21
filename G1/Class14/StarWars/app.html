@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="src/style.css" rel="stylesheet">
+
+    <title>Class 05 - StarWarsApp pt.1</title>
+</head>
+<body>
+    <img src="src/img/logo.png" alt="Star wars logo" class="center medium" />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4">
+            <img src="src/img/cosmonaut.svg" alt="cosmonaut logo" class="center small pointer" id="btnPeople" />
+        </div>
+
+        <div class="col-md-4">
+            <img src="src/img/rocket.svg" alt="space-ship logo" class="center small pointer" id="btnShips" />
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+
+    <img src="src/img/loader.gif" alt="loader" class="center" id="loader">
+
+    <div class="container">
+        <div id="result">
+
+        </div>
+    </div>
+
+    <!-- <div id="navigationButtons"> -->
+        <div class="row">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-2">
+                <button class="btn btn-warning center" id="previousButton">&lt;&lt; Previous</button>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-warning center" id="nextButton">Next &gt;&gt;</button>
+            </div>
+
+            <div class="col-md-4"></div>
+        </div>
+    <!-- </div> -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>

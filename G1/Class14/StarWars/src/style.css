@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.medium {
+  height: 40vh;
+}
+
+.small {
+  height: 30vh;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#result {
+  padding: 5%;
+}
+
+#loader {
+  display: none;
+  height: 10vh;
+}
+
+#previousButton,
+#nextButton {
+  display: none;
+}

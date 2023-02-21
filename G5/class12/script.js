@@ -163,7 +163,6 @@ class Animal {
                 console.log(`The animal ${this.name} is a ${this.type} and does not eat other animals!`)
             }
             else if (this.type !== 'herbivore'){
-                
                 if (someAnimal.size >= (2* this.size)){
                     console.log(`The animal ${this.name} tried to eat the ${someAnimal.name} but it was too large!`)
                 }

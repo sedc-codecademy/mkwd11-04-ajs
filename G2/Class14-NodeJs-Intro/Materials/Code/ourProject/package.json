@@ -1,0 +1,15 @@
+{
+  "name": "ourproject",
+  "version": "1.0.0",
+  "description": "hehe",
+  "main": "app.js",
+  "scripts": {
+    "test": "hehe"
+  },
+  "keywords": [
+    "hehe"
+  ],
+  "author": "boki",
+  "license": "ISC"
+
+}
