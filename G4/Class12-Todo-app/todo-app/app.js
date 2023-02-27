@@ -1,6 +1,6 @@
 console.log("works");
 // import files must end with .js
-import { Todo } from "./todo.model.js";
+import { Todo } from "./src/todo.model.js";
 
 console.log(Todo);
 

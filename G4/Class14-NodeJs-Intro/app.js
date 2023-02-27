@@ -1,4 +1,5 @@
 // Useful terminal commands
+// node -v in the terminal to check if you have node installed
 // node filename.js - runs a file in node.js ex: node app.js
 // cd (change directory) - shows current directory and can be used to move through the folders ex: cd ./src
 // ls (list) - shows the files and folders in the currently opened folder in the terminal
